@@ -1,12 +1,14 @@
 const fs = require('fs');
+const colors = require('colors');
 
 
 //module.exports.crearArchivo {tambien podemos exportar}
 let crearArchivo = (base, limite = 10) => {
     return new Promise((resolve, reject) => {
-
+        console.log('============'.green);
+        console.log(`tabla de ${base}`.red);
+        console.log('============'.yellow);
         let data = '';
-
         if (!Number(base)) {
             reject(`el valor introducido '${base}' no es un numero`);
             return;
