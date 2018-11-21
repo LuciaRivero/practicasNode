@@ -1,30 +1,27 @@
 const fs = require('fs');
 
-let listToDo = [];
+let listadoPorHacer = [];
 
-const saveDB = () => {
-    let data = JSON.stringify(listToDo);
-    fs.writeFile('db/data.json', data, function(err) {
-        if (err) {
-            return console.log(err);
-        }
-
-        console.log("The file was saved!");
+const guardarDB = () => {
+    let data = JSON.stringify(listadoPorHacer);
+    fs.writeFile('db/data.json', data, (err) => {
+        if (err) throw new Error('no se pudo guardar',
+            err);
     });
 }
 
 const crear = (descripcion) => {
-    let toDo = {
+    let porHacer = {
         descripcion,
         completado: false
     }
 
-    listToDo.push(toDo);
+    listadoPorHacer.push(porHacer);
 
-    saveDB();
+    guardarDB();
 
 
-    return toDo;
+    return porHacer;
 }
 
 module.exports = {
